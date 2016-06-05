@@ -1,0 +1,72 @@
+{
+    "version": 1,
+    "serial": 15,
+    "modules": [
+        {
+            "path": [
+                "root"
+            ],
+            "outputs": {},
+            "resources": {
+                "aws_iam_role.iam_for_lambda_foo": {
+                    "type": "aws_iam_role",
+                    "primary": {
+                        "id": "iam_for_lambda_foo",
+                        "attributes": {
+                            "arn": "arn:aws:iam::597868122620:role/iam_for_lambda_foo",
+                            "assume_role_policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"lambda.amazonaws.com\"\n      },\n      \"Effect\": \"Allow\",\n      \"Sid\": \"\"\n    }\n  ]\n}\n",
+                            "id": "iam_for_lambda_foo",
+                            "name": "iam_for_lambda_foo",
+                            "path": "/",
+                            "unique_id": "AROAI5YFK4KZS3ZITLP7M"
+                        }
+                    }
+                },
+                "aws_lambda_function.check_foo": {
+                    "type": "aws_lambda_function",
+                    "depends_on": [
+                        "aws_iam_role.iam_for_lambda_foo"
+                    ],
+                    "primary": {
+                        "id": "checkFoo",
+                        "attributes": {
+                            "arn": "arn:aws:lambda:eu-central-1:597868122620:function:checkFoo",
+                            "description": "my desctipt2",
+                            "function_name": "checkFoo",
+                            "handler": "lambda_function.lambda_handler",
+                            "id": "checkFoo",
+                            "last_modified": "2016-06-04T19:51:35.261+0000",
+                            "memory_size": "128",
+                            "role": "arn:aws:iam::597868122620:role/iam_for_lambda_foo",
+                            "runtime": "nodejs",
+                            "s3_bucket": "arvinep",
+                            "s3_key": "check_foo.zip",
+                            "source_code_hash": "mXyB216dqP+/qMNeiqkosDO5NtjK/9pjhqDDZKpzQ4k=",
+                            "timeout": "3"
+                        }
+                    }
+                },
+                "aws_s3_bucket_object.object": {
+                    "type": "aws_s3_bucket_object",
+                    "primary": {
+                        "id": "new_object_key",
+                        "attributes": {
+                            "bucket": "arvinep",
+                            "cache_control": "",
+                            "content_disposition": "",
+                            "content_encoding": "",
+                            "content_language": "",
+                            "content_type": "binary/octet-stream",
+                            "etag": "2c545fc4dd187f95ff21afe0a7b9c4fe",
+                            "id": "new_object_key",
+                            "key": "new_object_key",
+                            "kms_key_id": "",
+                            "source": "/vagrant/check_foo2.zip",
+                            "version_id": ""
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
