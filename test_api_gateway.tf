@@ -58,13 +58,13 @@ POLICY
 
 resource "aws_lambda_function" "test_role" {
     function_name    = "test"
-    description      = "Redirecting users from tracking website to google play"
+    description      = "Sample Desctiptopn"
     role             = "${aws_iam_role.test_role.arn}"
-    handler          = "tracker-play-store-redirect.handler"
+    handler          = "file_name.handler"
     memory_size      = "128"
     timeout          = "3"
-    filename         = "tracker-play-store-redirect.zip"
-    source_code_hash = "${base64sha256(file("tracker-play-store-redirect.zip"))}"
+    filename         = "file_name.zip"
+    source_code_hash = "${base64sha256(file("file_name.zip"))}"
     runtime          = "nodejs4.3"
     count            = "${var.enable_redirect-lambda}"
 }
